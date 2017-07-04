@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Geolocation</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+<script>
+    window.onload = function()
+    {
+        if (navigator.geolocation)
+            {
+                navigator.geolocation.getCurrentPosition(showPosition, badConnect);
+            } else
+            {
+                alert("Geolocation not available");
+            }
+    }
+    function showPosition(position)
+    {
+        var lat = position.coords.latitude;
+        var long = position.coords.longitude;
+        var mymap = L.map('mapid').setView([lat,long], 13);
+        L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZXQyNDA5IiwiYSI6ImNqNHA1Z25pdDBpaDUyd3RjeTR6dm5tYjUifQ.WanxcuNZYCpqv9LfIU3W_g', {maxZoom: 20,id: 'your.mapbox.project.id',
+    accessToken:'pk.eyJ1IjoiZXQyNDA5IiwiYSI6ImNqNHA1Z25pdDBpaDUyd3RjeTR6dm5tYjUifQ.WanxcuNZYCpqv9LfIU3W_g'
+        }).addTo(mymap);
+    }
+    function badConnect(e)
+    {
+        alert(e);
+    }
+    
+</script>
+<style>
+    #mapid {height: 300px;}
+</style>
+    
+</head>
+<body>
+    <div id="mapid"></div>
+</body>
+</html>
