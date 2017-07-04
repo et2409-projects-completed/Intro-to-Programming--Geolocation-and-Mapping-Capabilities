@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <script type="text/javascript" src="cordova.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css"/>
+        <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"></script>
+        <title>QuickMap App</title>
+        
+        <style>
+                    
+            #mapid { 
+                height: 300px; 
+            }
+            
+            #header {
+                color: cadetblue;
+                
+            }
+            
+            
+            #footer {
+                
+                color: cadetblue;
+                
+            }
+            
+        </style>
+        <script>
+            window.onload = function()
+            {
+                if (navigator.geolocation)
+                    {
+                        navigator.geolocation.getCurrentPosition(success,fail);
+                    } else
+                    {
+                        alert("Geolocation error");
+                    }
+        
+            }
+            function success(position)
+            {
+                var lat = position.coords.latitude;
+                var long = position.coords.longitude;
+                var mymap = L.map('mapid').setView([lat,long], 15);
+                L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZXQyNDA5IiwiYSI6ImNqNHA1Z25pdDBpaDUyd3RjeTR6dm5tYjUifQ.WanxcuNZYCpqv9LfIU3W_g', {
+                maxZoom: 20,
+                id: 'your.mapbox.project.id',
+                accessToken: 'pk.eyJ1IjoiZXQyNDA5IiwiYSI6ImNqNHA1Z25pdDBpaDUyd3RjeTR6dm5tYjUifQ.WanxcuNZYCpqv9LfIU3W_g'
+                }).addTo(mymap);
+            }
+            function fail(e)
+            {
+                console.log(e.message);
+            }
+
+        
+        </script>
+        
+    </head>
+    <body>
+        
+        <div data-role="page">
+        <div data-role="header" id="header">
+            <h2>QuickMap...You are here</h2>
+        </div>
+         
+        <div id="mapid"></div>
+            
+        <div data-role="footer" id= "footer" data-position="fixed"><h2>Thompson &copy; 2017</h2></div>
+        </div>
+       
+        
+    </body>
+</html
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
